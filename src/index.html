@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TokenFlow - Visualize LLM Token Streaming Speeds</title>
+
+  <!-- Performance optimizations -->
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="https://platform.openai.com">
+  <link rel="dns-prefetch" href="https://github.com">
+  <link rel="dns-prefetch" href="https://daveschumaker.net">
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="script.js" as="script">
+  <link rel="preload" href="running.svg" as="image">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Visualize and compare different LLM token streaming speeds with this interactive tool. Compare models like GPT-4, Claude, and more.">
+  <meta name="keywords" content="LLM, tokens, streaming, visualization, AI, GPT-4, Claude, language models">
+  <meta name="author" content="Dave Schumaker">
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="TokenFlow - Visualize LLM Token Streaming Speeds">
+  <meta property="og:description" content="Interactive tool to visualize and compare different LLM token streaming speeds">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://tokenflow.pages.dev/fast-robot.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="TokenFlow - Visualize LLM token streaming speeds">
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TokenFlow - Visualize LLM Token Streaming Speeds">
+  <meta name="twitter:description" content="Interactive tool to visualize and compare different LLM token streaming speeds">
+  <meta name="twitter:image" content="https://tokenflow.pages.dev/fast-robot.png">
+  <meta name="twitter:image:alt" content="TokenFlow - Visualize LLM token streaming speeds">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="title-container">
+        <img src="running.svg" alt="TokenFlow Logo" class="logo">
+        <h1>Visualize LLM Token Streaming Speeds</h1>
+      </div>
+      <div class="controls">
+        <div class="control-group">
+          <label for="speed">Tokens per second:</label>
+          <input type="number" id="speed" name="speed" value="5" min="0.1" max="10000" step="0.1" />
+        </div>
+
+        <div class="control-group">
+          <label for="presetSpeed">Presets:</label>
+          <select id="presetSpeed">
+            <option value="">-- Custom --</option>
+            <option value="26">Deepseek R1 (~26 t/s)</option>
+            <option value="50">Claude Sonnet 3.5 (~50 t/s)</option>
+            <option value="100">GPT-4o (~100 t/s)</option>
+            <option value="1100">Mistral Le Chat (~1,100 t/s)</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <button id="toggleButton" class="button button-primary">Start</button>
+          <button id="resetButton" class="button button-secondary">Reset</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="token-container">
+      <pre class="token-stream" id="tokenStream"></pre>
+    </div>
+  </main>
+
+  <footer class="footnotes">
+    <ul class="footnotes-list">
+      <li>
+        <span class="footnote-number">•</span>
+        <span>
+          <em>Lorem ipsum</em> tokens were calculated using <a href="https://platform.openai.com/tokenizer" target="_blank" rel="noopener noreferrer">OpenAI's Tokenizer</a> for GPT-4o.
+      </li>
+      <li>
+        <span class="footnote-number">•</span>
+        <span>Speed measurements for preset services are approximate and gathered from various sources via an Internet search. Curious about the inference speed for given hardware (e.g., RTX 4090)? <a href="https://github.com/XiongjieDai/GPU-Benchmarks-on-LLM-Inference" target="_blank" rel="noopener noreferrer">Check out this Github repo.</a></span>
+      </li>
+      <li>
+        <span class="footnote-number">•</span>
+        <span>View the <a href="https://github.com/daveschumaker/tokenflow.git" target="_blank" rel="noopener noreferrer">Github repo</a> for TokenFlow. Running person logo is used with attribution from <a href="https://www.flaticon.com/free-icons/emergency" target="_blank" rel="noopener noreferrer">Flaticon</a>.</span>
+      </li>
+      <li>
+        <span class="footnote-number">•</span>
+        <span>Created by <a href="https://daveschumaker.net/" target="_blank" rel="noopener noreferrer">Dave Schumaker</a>. You can read more about why I made TokenFlow <a href="https://daveschumaker.net/tokenflow-visualize-llm-token-streaming-speeds/" target="_blank" rel="noopener noreferrer">here</a>. Questions, comments, want to say hi? <a href="mailto:dave@dave.ly?subject=Hello">Email me!</a></span>
+      </li>
+    </ul>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
